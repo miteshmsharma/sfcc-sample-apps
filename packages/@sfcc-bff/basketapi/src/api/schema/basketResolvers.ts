@@ -120,7 +120,7 @@ const getBasket = async (config: Config, context: AppContext) => {
             context,
             productIds,
         );
-        // update the image to the product items in basket
+        // update the image to the product items in basket  
         basket.productItems.forEach(product => {
             const item = productDetails.find(
                 item => item.pid === product.productId,
@@ -128,8 +128,10 @@ const getBasket = async (config: Config, context: AppContext) => {
 
             if (item) {
                 product.image = item.imageURL ?? '';
+                product.color = item.color;
             }
         });
+
     }
     return basket;
 };
@@ -139,14 +141,13 @@ const getProductsDetailsInfo = async (
     context: AppContext,
     ids: string,
 ) => {
-    let productItems: Array<{ pid: string; imageURL: string }> = [];
+    let productItems: Array<{ pid: string; imageURL: string ; color: string}> = [];
     const productClient = await getProductClient(config, context);
 
     const result = await productClient
         .getProducts({
             parameters: {
                 ids: ids,
-                allImages: true,
             },
         })
         .catch(e => {
@@ -158,8 +159,10 @@ const getProductsDetailsInfo = async (
         let productDetailsInfo = {
             pid: '',
             imageURL: '',
+            color: '',
         };
         productDetailsInfo.pid = product.id;
+        productDetailsInfo.color = product.c_color;
         const imageGroups = product.imageGroups;
         if (imageGroups) {
             let imageArray = imageGroups?.find(

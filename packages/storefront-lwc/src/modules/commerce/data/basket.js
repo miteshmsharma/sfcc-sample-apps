@@ -162,6 +162,7 @@ class Basket {
                                 productName
                                 price
                                 image
+                                color
                             }
                             orderTotal
                             orderLevelPriceAdjustment {

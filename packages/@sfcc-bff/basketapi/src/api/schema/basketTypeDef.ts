@@ -44,6 +44,7 @@ export const basketTypeDef = gql`
         quantity: Int!
         itemId: String!
         image: String
+        color: String
     }
     type ShippingMethods {
         applicableShippingMethods: [ShippingMethod]
