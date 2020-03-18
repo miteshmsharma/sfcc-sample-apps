@@ -11,7 +11,39 @@
         <div class="basket-error-messaging basket-error">
         </div>
 
-        <div class="container">
+        <!--- <template if:false={loading}> --->
+            <template if:false={hasProducts}>
+                
+                <div class="container">
+                    <div class="row cart-empty-message">
+                        <div class="col text-center">
+                            <h3> Your Shopping Cart is Empty </h3>
+                        </div>
+                        
+                    </div>
+        
+                    <div class="row cart-continue-shopping">
+                        <div class="col"></div>
+                        <div class="col-12 col-sm-6 text-center">
+                            <span>
+                                <a href="/" class="btn btn-primary btn-block"> Continue </a>
+                            </span>
+                        </div>
+                        <div class="col"></div>
+                    </div>
+        
+                    <div class="row cart-need-help">
+                        <div class="col text-center">
+                            <span><a class="help-phone-number" href="tel:1-800-555-0199">Need Help? Call 1-800-555-0199</a></span>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            
+        <!---  </template>   --->
+        
+
+        <div class="container" if:true={hasProducts}>
             <h1 class="page-title">Your basket</h1>
             <div class="row basket-header">
                 <div class="col-sm-4 hidden-xs-down">
